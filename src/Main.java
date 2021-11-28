@@ -1,7 +1,6 @@
 import Database.Database;
-import Database.RegistrationDB;
-import Model.Group;
-import Model.Person;
+import Database.PersonsDB;
+import Database.TicketsDB;
 
 public class Main
 {
@@ -18,7 +17,8 @@ public class Main
 
     public void run()
     {
-        Database db = RegistrationDB.getInstance();
+        Database P_DB = PersonsDB.getInstance();
+        Database T_DB = TicketsDB.getInstance();
 
     }
 

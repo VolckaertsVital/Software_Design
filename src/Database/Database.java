@@ -1,8 +1,15 @@
 package Database;
 
-import java.util.Observable;
 
-public abstract class Database extends Observable
+import Model.Person;
+import Model.Ticket;
+
+public abstract class Database
 {
-    public Database() { }
+    public Database() {
+
+    }
+
+    //public abstract void AddPerson(Person p);
+    //public abstract void AddTicket(Ticket t);
 }

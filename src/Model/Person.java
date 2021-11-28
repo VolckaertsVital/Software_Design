@@ -7,6 +7,7 @@ public class Person {
     public String LastName;
     public double Spend;
     public Group group;
+    public Ticket ticket;
 
     public Person(String _FirstName, String _LastName, double _Spend)
     {
