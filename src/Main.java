@@ -1,3 +1,5 @@
+package Main;
+
 import Database.Database;
 import Database.PersonsDB;
 import Database.TicketsDB;
