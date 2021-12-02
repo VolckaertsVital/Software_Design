@@ -21,8 +21,8 @@ public class Main
 
     public void run() {
 
-        //Database P_DB = PersonDB.getInstance();
-        //Database T_DB = TicketDB.getInstance();
+        Database P_DB = PersonDB.getInstance();
+        Database T_DB = TicketDB.getInstance();
         //Controller register= new RegistrationController(timedb);
 
 

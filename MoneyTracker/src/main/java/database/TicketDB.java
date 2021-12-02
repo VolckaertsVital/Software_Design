@@ -1,6 +1,6 @@
 package database;
 
-public class TicketDB {
+public class TicketDB extends Database{
 
     private static TicketDB instance;
 

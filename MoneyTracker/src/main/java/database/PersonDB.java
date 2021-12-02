@@ -1,6 +1,6 @@
 package database;
 
-public class PersonDB {
+public class PersonDB extends Database{
 
     private static PersonDB instance;
 
