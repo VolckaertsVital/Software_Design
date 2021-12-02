@@ -1,11 +1,9 @@
 import controller.Controller;
-import controller.RegistrationController;
 import database.Database;
-import database.RegistrationDB;
-import employee.CustomerService;
-import employee.Employee;
-import employee.Manager;
-import employee.Programmer;
+import database.PersonDB;
+import database.TicketDB;
+
+
 import register_entry.RegisterEntry;
 
 public class Main
@@ -21,37 +19,13 @@ public class Main
 
     }
 
-    public void run()
-    {
-        Database timedb = new RegistrationDB();
-        Controller register= new RegistrationController(timedb);
+    public void run() {
 
-        Employee e1 = new Programmer("Alice");
-        Employee e2 = new CustomerService("Bob");
-        Employee e3 = new Manager("Charlie");
+        //Database P_DB = PersonDB.getInstance();
+        //Database T_DB = TicketDB.getInstance();
+        //Controller register= new RegistrationController(timedb);
 
-        register.checkIn(e1);
-        register.checkIn(e2);
 
-        print(e1, timedb.getEntry(e1));
-        print(e2, timedb.getEntry(e2));
-
-        // We missed the print section of this checkin
-        register.checkIn(e3);
-
-        register.checkOut(e1);
-        register.checkOut(e2);
-        register.checkOut(e3);
-
-        print(e1, timedb.getEntry(e1));
-        print(e2, timedb.getEntry(e2));
-        print(e3, timedb.getEntry(e3));
     }
 
-    public void print(Employee e, RegisterEntry re)
-    {
-        System.out.println(e.getName() +
-                " (" + e.getFunction() + ")" +
-                " " + re);
-    }
 }
