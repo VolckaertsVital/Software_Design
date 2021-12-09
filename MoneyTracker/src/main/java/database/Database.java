@@ -2,13 +2,20 @@ package database;
 
 
 import register_entry.RegisterEntry;
+import model.ticket;
+import model.person;
 
-public abstract class Database
+import java.util.Observable;
+
+public abstract class Database extends Observable
 {
     public Database() {
 
     }
 
-    //public abstract void AddPerson(Person p);
-    //public abstract void AddTicket(Ticket t);
+    public abstract void AddPerson(person p, RegisterEntry entry);
+
+
+
+    public abstract void AddTicket(ticket t, RegisterEntry entry);
 }
