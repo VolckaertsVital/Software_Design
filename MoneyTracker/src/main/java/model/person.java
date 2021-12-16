@@ -6,14 +6,13 @@ public class person {
     public String FirstName;
     public String LastName;
     public double Spend;
-    public ticket Ticket;
+    public ticket ticket;
 
-    public person(String FirstName, String LastName, double Spend, ticket Ticket)
+    public person(String _FirstName, String _LastName, double _Spend)
     {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Spend = Spend;
-        this.Ticket = Ticket;
+        this.FirstName = _FirstName;
+        this.LastName = _LastName;
+        this.Spend = _Spend;
     }
 
     public String GetFullName() {

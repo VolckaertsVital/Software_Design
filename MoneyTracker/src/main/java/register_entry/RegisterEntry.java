@@ -5,21 +5,21 @@ import java.util.Calendar;
 public class RegisterEntry
 {
     protected boolean checkedIn;
-    /*protected int hours;
+    protected int hours;
     protected int minutes;
-    protected int seconds;*/
+    protected int seconds;
 
     public RegisterEntry(boolean checkedIn)
     {
         this.checkedIn = checkedIn;
 
-        /*Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         this.hours = calendar.get(Calendar.HOUR_OF_DAY);
         this.minutes = calendar.get(Calendar.MINUTE);
-        this.seconds = calendar.get(Calendar.SECOND);*/
+        this.seconds = calendar.get(Calendar.SECOND);
     }
 
-    /*public boolean isCheckedIn()
+    public boolean isCheckedIn()
     {
         return checkedIn;
     }
@@ -37,7 +37,7 @@ public class RegisterEntry
     public int getSeconds()
     {
         return seconds;
-    }*/
+    }
 
     @Override
     public String toString()
@@ -52,6 +52,6 @@ public class RegisterEntry
             status = "out";
         }
 
-        return String.format("checked %s at %02d:%02d:%02d", status);
+        return String.format("checked %s at %02d:%02d:%02d", status, getHours(), getMinutes(), getSeconds());
     }
 }
