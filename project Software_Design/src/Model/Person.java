@@ -1,13 +1,14 @@
 package Model;
 
+import model.ticket;
+
 public class Person {
 
     public int ID;
     public String FirstName;
     public String LastName;
     public double Spend;
-    public Group group;
-    public Ticket ticket;
+    public ticket Ticket;
 
     public Person(String _FirstName, String _LastName, double _Spend)
     {
