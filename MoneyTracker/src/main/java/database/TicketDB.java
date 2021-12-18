@@ -6,7 +6,7 @@ import register_entry.RegisterEntry;
 
 import java.util.HashMap;
 
-public class TicketDB extends Database{
+public class TicketDB extends TicketDatabase{
 
     private final HashMap<ticket, RegisterEntry> db;
 
@@ -25,25 +25,18 @@ public class TicketDB extends Database{
     }
 
     @Override
-    public void AddPerson(person p, RegisterEntry entry) {
-
-    }
-
-    @Override
-    public void DeletePerson(person p, RegisterEntry entry) {
-
-    }
-
-    @Override
     public void AddTicket(ticket t, RegisterEntry entry) {
+
         this.db.put(t, entry);
         setChanged();
+        notifyObservers(t);
     }
 
     @Override
     public void DeleteTicket(ticket t, RegisterEntry entry) {
         this.db.remove( t, entry);
         setChanged();
+        notifyObservers(t);
     }
 
 

@@ -11,7 +11,7 @@ public interface Controller
     void addTicket(ticket t);
 
     //methode add person
-    void addUser(person p);
+    void addPerson(person p);
 
     //methode remove ticket
     void removeTicket(ticket t);

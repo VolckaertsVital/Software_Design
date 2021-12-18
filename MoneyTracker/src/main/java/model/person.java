@@ -3,20 +3,17 @@ package model;
 public class person {
 
     public int ID;
-    public String FirstName;
-    public String LastName;
+    public String Name;
     public double Spend;
-    public ticket Ticket;
 
-    public person(String FirstName, String LastName, double Spend, ticket Ticket)
+    public person(String Name, double Spend)
     {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
+        this.Name = Name;
         this.Spend = Spend;
-        this.Ticket = Ticket;
+        ID = ID + 1;
     }
 
-    public String GetFullName() {
-        return FirstName + LastName;
+    public String getName() {
+        return Name;
     }
 }

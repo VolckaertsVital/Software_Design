@@ -6,7 +6,7 @@ import register_entry.RegisterEntry;
 
 import java.util.HashMap;
 
-public class PersonDB extends Database{
+public class PersonDB extends PersonDatabase{
 
     private final HashMap<person, RegisterEntry> db;
 
@@ -27,25 +27,25 @@ public class PersonDB extends Database{
 
     @Override
     public void AddPerson(person p, RegisterEntry entry) {
-        this.db.put( p, entry);
-        setChanged();
+        //checking if name already exist
+        if(db.containsKey(p))
+        {
+            System.out.println("this name already exist in group. choose other name.");
+        }
+        else{
+            //add name to hashmap
+            this.db.put( p, entry);
+            setChanged();
+            notifyObservers(p);
+        }
+
+
     }
 
     @Override
     public void DeletePerson(person p, RegisterEntry entry) {
         this.db.remove(p , entry);
         setChanged();
+        notifyObservers(p);
     }
-
-    @Override
-    public void AddTicket(ticket t, RegisterEntry entry) {
-
-    }
-
-    @Override
-    public void DeleteTicket(ticket t, RegisterEntry entry) {
-
-    }
-
-
 }

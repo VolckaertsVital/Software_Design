@@ -1,39 +1,38 @@
 package controller;
 
-import database.Database;
+import database.TicketDatabase;
 import model.person;
 import model.ticket;
 import register_entry.RegisterEntry;
 
-public class PersonAndTicketController implements Controller{
-    private final Database pdb;
-    private final Database tdb;
+public class TicketController implements Controller{
+    private final TicketDatabase tdb;
 
-    public PersonAndTicketController(Database pdb, Database tdb){
-
-        this.pdb = pdb;
+    public TicketController(TicketDatabase tdb){
         this.tdb = tdb;
     }
 
     @Override
     public void addTicket(ticket t) {
         RegisterEntry entry = new RegisterEntry(true);
-
+        tdb.AddTicket(t, entry);
     }
 
     @Override
-    public void addUser(person p) {
+    public void addPerson(person p) {
 
     }
 
     @Override
     public void removeTicket(ticket t) {
-
+        RegisterEntry entry = new RegisterEntry(false);
+        tdb.DeleteTicket(t, entry);
     }
 
     @Override
     public void removePerson(person p) {
 
     }
-}
 
+
+}

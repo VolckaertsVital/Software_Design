@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class ticket {
+    public int ID;
     public double Amount;
     public String Title;
     public String Description;

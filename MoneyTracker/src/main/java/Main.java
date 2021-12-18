@@ -1,10 +1,10 @@
-import controller.Controller;
-import database.Database;
-import database.PersonDB;
-import database.TicketDB;
+import controller.PersonController;
+import controller.TicketController;
+import database.*;
 
 
-import register_entry.RegisterEntry;
+import observers.PersonObserver;
+import observers.UpdateObserver;
 
 public class Main
 {
@@ -21,10 +21,15 @@ public class Main
 
     public void run() {
 
-        Database P_DB = PersonDB.getInstance();
-        Database T_DB = TicketDB.getInstance();
-        //Controller register= new RegistrationController(timedb);
+        PersonDatabase P_DB = PersonDB.getInstance();
+        TicketDatabase T_DB = TicketDB.getInstance();
+        PersonController controller = new PersonController(P_DB);
+        TicketController controller2 = new TicketController(T_DB);
+        UpdateObserver obs1 = new UpdateObserver();
+        PersonObserver obs2 = new PersonObserver();
 
+        P_DB.addObserver(obs1);
+        P_DB.addObserver(obs2);
 
     }
 
