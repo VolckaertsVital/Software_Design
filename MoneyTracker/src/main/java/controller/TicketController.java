@@ -39,7 +39,7 @@ public class TicketController implements Controller{
         else{  //deelt het bedrag door het aantal personen in de groep behalve de persoon die betaald heeft en voegt het toe aan hun balance(getSpend)
             double amountPerPerson = amount / (personCount - 1);
             for (person i : lendFor){
-                if (i.getName() == paidBy.getName()){
+                if (i.getName().equals(paidBy.getName())){
                     i.setSpend(i.getSpend());
                 }
                 else{
