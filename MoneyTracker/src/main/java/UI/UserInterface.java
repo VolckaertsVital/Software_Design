@@ -2,20 +2,23 @@ package UI;
 
 import UI.Panels.ButtonPanel;
 import UI.Panels.ListPanel;
-import controller.PersonAndTicketController;
+import controller.PersonController;
+import controller.TicketController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class UserInterface extends JFrame {
 
-    PersonAndTicketController controller;
+    PersonController p_controller;
+    TicketController t_controller;
     ListPanel listPanel;
     ButtonPanel buttonPanel;
 
-    public UserInterface(PersonAndTicketController controller){
+    public UserInterface(PersonController pcontroller, TicketController tcontroller){
         super("MoneyTracker");
-        this.controller = controller;
+        this.p_controller = pcontroller;
+        this.t_controller = tcontroller;
     }
 
     public void init(){
@@ -25,7 +28,7 @@ public class UserInterface extends JFrame {
         this.setLocationRelativeTo(null);
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout); //https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html#gridbag
-        buttonPanel = new ButtonPanel(controller);
+        buttonPanel = new ButtonPanel(p_controller, t_controller);
         listPanel = new ListPanel();
 
         //this.add(buttonPanel);

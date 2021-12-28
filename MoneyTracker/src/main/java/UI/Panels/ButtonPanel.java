@@ -1,14 +1,16 @@
 package UI.Panels;
 
-import controller.PersonAndTicketController;
+
+import controller.PersonController;
+import controller.TicketController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ButtonPanel extends JPanel {
 
-    private static PersonAndTicketController controller;
-
+    private static PersonController p_controller;
+    private static TicketController t_controller;
     private final JTextField userName;
 
     private final JLabel userCount;
@@ -22,9 +24,10 @@ public class ButtonPanel extends JPanel {
     private int ticketCounter = 0;
 
 
-    public ButtonPanel(PersonAndTicketController controller) {
+    public ButtonPanel(PersonController pcontroller, TicketController tcontroller) {
 
-        this.controller = controller;
+        this.p_controller = pcontroller;
+        this.t_controller = tcontroller;
 
         userCount = new JLabel("Users: " + userCounter);
         userCount.setPreferredSize(new Dimension(75, 25));
