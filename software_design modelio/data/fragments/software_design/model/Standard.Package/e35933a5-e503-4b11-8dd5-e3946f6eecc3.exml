@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="software_design" version="4">
+  <OBJECT>
+    <ID name="software_design" mc="Standard.Package" uid="e35933a5-e503-4b11-8dd5-e3946f6eecc3"/>
+    <PID name="software_design" mc="Standard.Project" uid="fef08fa8-395e-40f9-b931-2a590325206f"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[software_design]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Ticket" mc="Standard.Class" uid="67254ed9-6a79-4e42-bebe-5286d24ebaa0"/>
+        <COMPID name="Person" mc="Standard.Class" uid="13b8745f-e9bc-4a07-85f2-9b14ce121a4c"/>
+        <COMPID name="ModelFactory" mc="Standard.Class" uid="f5200102-0110-4056-9337-48cb49938c37"/>
+        <COMPID name="PersonController" mc="Standard.Class" uid="793a27f8-b0e1-48cd-985e-0d68745c61fe"/>
+        <COMPID name="TicketController" mc="Standard.Class" uid="498e082a-4380-434c-89e9-83a266300ba0"/>
+        <COMPID name="Controller" mc="Standard.Interface" uid="63aba87d-db9c-420f-bfe7-7c0cda9d2114"/>
+        <COMPID name="AbstractFactory" mc="Standard.Interface" uid="afdb69cf-c7d8-4636-8613-efb600f8e00e"/>
+        <COMPID name="TicketDatabase" mc="Standard.Class" uid="94786b72-4df7-47d2-9b0c-daa7bc63b404"/>
+        <COMPID name="personDatabase" mc="Standard.Class" uid="3fcd8a2b-94fc-420c-9dfd-1e90aeaa634f"/>
+        <COMPID name="RegisterEntry" mc="Standard.Class" uid="b3dab700-ef0d-43ed-82ce-edc5ad67de83"/>
+        <COMPID name="PersonDB" mc="Standard.Class" uid="6e94eb54-a2f3-4dc5-8d0f-de7a0d32169d"/>
+        <COMPID name="TicketDB" mc="Standard.Class" uid="f57bb6c8-f2a3-4f02-a7be-8f0c24929009"/>
+        <COMPID name="PersonObserver" mc="Standard.Class" uid="6268f4f4-6a74-47f6-97de-844ab426a0c8"/>
+        <COMPID name="UpdateObserver" mc="Standard.Class" uid="c3b46638-f2d1-4606-80a1-238eb0dee297"/>
+        <COMPID name="GUI" mc="Standard.Class" uid="cefeee50-9f27-4fa4-a130-13e745b41e97"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="software_design Class diagram" mc="Standard.ClassDiagram" uid="cc0295df-8a84-45f7-aeab-d05d9090f7c7"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
