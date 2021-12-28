@@ -3,6 +3,9 @@ import controller.TicketController;
 import database.*;
 
 
+import factory.AbstractFactory;
+import factory.ModelFactory;
+import model.person;
 import observers.PersonObserver;
 import observers.UpdateObserver;
 

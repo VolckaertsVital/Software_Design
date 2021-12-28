@@ -10,10 +10,17 @@ public class person {
     {
         this.Name = Name;
         this.Spend = Spend;
-        ID = ID + 1;
+        //ID = ID + 1;
     }
 
     public String getName() {
         return Name;
+    }
+
+    public double getSpend(){
+        return Spend;
+    }
+    public void setSpend(double spend){
+        this.Spend = spend;
     }
 }

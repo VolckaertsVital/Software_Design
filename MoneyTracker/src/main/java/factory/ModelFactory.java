@@ -14,7 +14,7 @@ public class ModelFactory implements AbstractFactory{
     }
 
     @Override
-    public ticket getTicket(int ID, double Amount, String Title, String Description, person Paid, boolean SplitEven, ArrayList Lend) {
-        return new ticket(Amount, Title, Description, Paid, SplitEven, Lend);
+    public ticket getTicket(int ID, double Amount, String Title, String Description, person PaidBy, boolean SplitEven, ArrayList LendFor) {
+        return new ticket(Amount, Title, Description, PaidBy, SplitEven, LendFor);
     }
 }

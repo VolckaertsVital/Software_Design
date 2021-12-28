@@ -7,21 +7,21 @@ public class ticket {
     public double Amount;
     public String Title;
     public String Description;
-    public person Paid;
+    public person PaidBy;
     public boolean SplitEven;
-    public ArrayList Lend;
+    public ArrayList LendFor;
 
-    public ticket(double Amount, String Title, String Description, person Paid, boolean SplitEven, ArrayList Lend){
+    public ticket(double Amount, String Title, String Description, person PaidBy, boolean SplitEven, ArrayList LendFor){
         this.Amount = Amount;
         this.Title = Title;
         this.Description = Description;
-        this.Paid = Paid;
+        this.PaidBy = PaidBy;
         this.SplitEven = SplitEven;
-        this.Lend = Lend;
+        this.LendFor = LendFor;
     }
 
     public String getInfo(){
-        return Title + Description + Amount + Paid + Lend;
+        return Title + Description + Amount + PaidBy + LendFor;
     }
 
     public boolean isSplitEven() {
@@ -33,7 +33,11 @@ public class ticket {
     }
 
     public ArrayList getLend() {
-        return Lend;
+        return LendFor;
+    }
+
+    public person getPaidBy() {
+        return PaidBy;
     }
 
     public String getTitle() {
