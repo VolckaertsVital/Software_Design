@@ -3,9 +3,16 @@ package UI.Panels;
 
 import controller.PersonController;
 import controller.TicketController;
+import factory.AbstractFactory;
+import factory.FactoryProvider;
+
+import model.person;
 
 import javax.swing.*;
+import javax.xml.bind.Marshaller;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ButtonPanel extends JPanel {
 
@@ -32,6 +39,14 @@ public class ButtonPanel extends JPanel {
 
     private int userCounter = 0;
     private int ticketCounter = 0;
+
+    private String input;
+
+    private person person;
+    HashMap<Integer, person> UserHash = new HashMap<>();
+
+    ArrayList<person> splitOddList = new ArrayList<>();
+    ArrayList<person> allUsers = new ArrayList<>();
 
 
     public ButtonPanel(PersonController pcontroller, TicketController tcontroller) {
@@ -102,5 +117,29 @@ public class ButtonPanel extends JPanel {
         addTicket = new JButton("Confirm");
         addTicket.setPreferredSize(new Dimension(75, 25));
         this.add(this.addTicket);
+
+
+    }
+
+    public void addingUser() {
+        this.addUser.addActionListener(Listener ->
+        {
+            input = userName.getText();
+            if(input.equals("")) {
+                JOptionPane.showMessageDialog(null, "Name Required!");
+            } else {
+                userCounter++;
+                AbstractFactory factory = FactoryProvider.getMainFactory();
+                this.person = factory.getPerson(input, 0.0);
+                UserHash.put(userCounter, person);
+                allUsers.add(person);
+                p_controller.addPerson(person);
+
+            }
+        });
+    }
+
+    public void addTicket(){
+        
     }
 }
