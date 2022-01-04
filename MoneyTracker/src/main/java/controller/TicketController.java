@@ -4,8 +4,12 @@ import database.TicketDatabase;
 import model.person;
 import model.ticket;
 import register_entry.RegisterEntry;
+import sun.security.krb5.internal.Ticket;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import static java.lang.Math.abs;
 
 public class TicketController implements Controller{
     private final TicketDatabase tdb;
@@ -51,6 +55,63 @@ public class TicketController implements Controller{
     }
 
     public void CalculateBill(){
+        HashMap<person, Double> persons = new HashMap<>();
+        ArrayList<person> allUsers = t.getLend();
+
+        person mostPosPerson = null;
+        person mostNegPerson = null;
+        double mostPos;
+        double mostNeg;
+
+        for (person i : allUsers) {              // zet users in hashmap die balance niet op 0 hebben staan
+            if (i.getSpend() != 0)
+                persons.put(i, i.getSpend());
+        }
+
+        if (!splitEven) // zet betaler ook bij users als het oneven is gesplitst
+        {
+            if (paidBy.getSpend() != 0)
+                persons.put(paidBy, paidBy.getSpend());
+        }
+
+
+        while (persons.size() >= 2) {
+            mostPos = 0.00;
+            mostNeg = 0.00;
+
+            for (person i : persons.keySet()) {  // overloopt alle users
+
+
+                if (persons.get(i) > mostPos) {
+
+                    mostPosPerson = i;
+                    mostPos = persons.get(i);
+
+                }
+
+                if (persons.get(i) < mostNeg) {
+                    mostNegPerson = i;
+                    mostNeg = persons.get(i);
+
+                }
+            }
+
+            if (abs(mostPos) == abs(mostNeg)) {
+                System.out.println(mostNegPerson.getName() + " has to pay " + Math.round(abs(mostNeg * 100)) / 100.0 + "€ to " + mostPosPerson.getName());
+                persons.remove(mostNegPerson);
+                persons.remove(mostPosPerson);
+            } else if (abs(mostPos) < abs(mostNeg)) {
+                System.out.println(mostNegPerson.getName() + " has to pay " + Math.round(abs(mostPos * 100)) / 100.0 + "€ to " + mostPosPerson.getName());
+                persons.remove(mostPosPerson);
+                persons.replace(mostNegPerson, persons.get(mostNegPerson) + mostPos);
+            } else {
+                System.out.println(mostNegPerson.getName() + " has to pay " + Math.round(abs(mostNeg * 100)) / 100.0 + "€ to " + mostPosPerson.getName());
+                persons.remove(mostNegPerson);
+                persons.replace(mostPosPerson, persons.get(mostPosPerson) - mostNeg);
+            }
+
+
+        }
 
     }
 
