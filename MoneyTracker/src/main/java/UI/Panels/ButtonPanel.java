@@ -7,6 +7,7 @@ import factory.AbstractFactory;
 import factory.FactoryProvider;
 
 import model.person;
+import model.ticket;
 
 import javax.swing.*;
 import javax.xml.bind.Marshaller;
@@ -40,14 +41,30 @@ public class ButtonPanel extends JPanel {
     private int userCounter = 0;
     private int ticketCounter = 0;
 
+    private double ticketPrice = 0;
+
     private String input;
+    private String typeTicket;
+    private String paidBy;
+
+    private String paidFor;
+    private String[] paidForArray;
+
+    private boolean foundUser;
+    private boolean splitEven;
+
 
     private person person;
+    private person paidForUser;
+    private ticket ticket;
     HashMap<Integer, person> UserHash = new HashMap<>();
 
     ArrayList<person> splitOddList = new ArrayList<>();
     ArrayList<person> allUsers = new ArrayList<>();
 
+    private boolean error;
+    private boolean foundUserToRemove = false;
+    private boolean foundPaidFor = false;
 
     public ButtonPanel(PersonController pcontroller, TicketController tcontroller) {
 
@@ -139,7 +156,104 @@ public class ButtonPanel extends JPanel {
         });
     }
 
-    public void addTicket(){
+    public void addingTicket(){
+        this.addTicket.addActionListener(listener ->
+        {
+            error = false;
+
+            typeTicket = ticketType.getText();
+            paidBy = ticketPaidBy.getText();
+
+
+            if (ticketType.getText().length() <= 0 || ticketPaidBy.getText().length() <= 0 || ticketPriceField.getText().length() <= 0) {
+                JOptionPane.showMessageDialog(null, "Textbox Empty!");
+                error = true;
+            }
+
+            for (int i : UserHash.keySet()) {
+
+                if (paidBy.equals(UserHash.get(i).getName())) { // als de naam van een user in de hashmap & database overeenkomt met de ingetypte naam in de gui.
+                    person = UserHash.get(i);
+                    foundUser = true;
+                }
+
+            }
+
+            ticketPrice = Double.parseDouble((ticketPriceField.getText()));
+
+            if (boxsplitEven.isSelected() && boxsplitOdd.isSelected()) {
+                JOptionPane.showMessageDialog(null, "You can't check both boxes!");
+                error = true;
+            } else splitEven = boxsplitEven.isSelected();
+
+            if (splitEven) {
+                if (foundUser && ticketType.getText().length() > 0 && ticketPaidBy.getText().length() > 0 && ticketPriceField.getText().length() > 0 && !error) {
+
+                    ticketCounter++;
+                    ticketCount.setText("# Tickets : " + ticketCount);
+                    AbstractFactory factory = FactoryProvider.getMainFactory();
+                    this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, allUsers); // paid for all users
+                    t_controller.addTicket(ticket);
+                    foundUser = false;
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Make sure you filled everything in correctly!");
+                }
+
+            } else // ticket is niet even gesplit
+            {
+                paidFor = paidForTextfield.getText();
+                paidForArray = paidFor.split(","); //
+
+                foundPaidFor = false;
+
+                splitOddList.clear();
+                for (int i : UserHash.keySet()) {
+                    for (int j = 0; j <= paidForArray.length - 1; j++) // Voor alle users in de String
+                    {
+                        if (paidForArray[j].equals(UserHash.get(i).getName())) { // als de naam van een user in de hashmap & database overeenkomt met de ingetypte naam in de gui.
+                            paidForUser = UserHash.get(i);
+                            splitOddList.add(paidForUser);
+                            foundPaidFor = true;
+                        }
+
+                    }
+                }
+
+                if (splitOddList.size() == 0)
+                    foundPaidFor = false;
+
+
+                if (!foundPaidFor && !splitEven) {
+                    JOptionPane.showMessageDialog(null, "There is no user with the name " + paidFor);
+                    error = true;
+                }
+
+
+                if (!splitEven && paidFor.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Fill in the users you have paid for!");
+                    error = true;
+                }
+
+
+                if (foundUser && ticketType.getText().length() > 0 && ticketPaidBy.getText().length() > 0 && ticketPriceField.getText().length() > 0 && foundPaidFor && !error) {
+
+                    ticketCounter++;
+                    ticketCount.setText("# Tickets : " + ticketCount);
+                    AbstractFactory factory = FactoryProvider.getMainFactory();
+                    this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, splitOddList);
+                    t_controller.addTicket(ticket);
+                    foundUser = false;
+                    error = false;
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Make sure you filled everything in correctly!");
+                }
+
+            }
+
+
+        });
         
     }
 }
