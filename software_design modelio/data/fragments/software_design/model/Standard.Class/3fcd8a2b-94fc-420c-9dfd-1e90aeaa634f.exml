@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="personDatabase" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="&lt;&lt;personDatabase&gt;&gt;" version="4">
   <OBJECT>
-    <ID name="personDatabase" mc="Standard.Class" uid="3fcd8a2b-94fc-420c-9dfd-1e90aeaa634f"/>
+    <ID name="&lt;&lt;personDatabase&gt;&gt;" mc="Standard.Class" uid="3fcd8a2b-94fc-420c-9dfd-1e90aeaa634f"/>
     <PID name="software_design" mc="Standard.Package" uid="e35933a5-e503-4b11-8dd5-e3946f6eecc3"/>
     <ATTRIBUTES>
       <ATT name="IsActive">false</ATT>
@@ -11,7 +11,7 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[personDatabase]]></ATT>
+      <ATT name="Name"><![CDATA[<<personDatabase>>]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>

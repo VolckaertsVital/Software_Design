@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="TicketDatabase" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="&lt;&lt;TicketDatabase&gt;&gt;" version="4">
   <OBJECT>
-    <ID name="TicketDatabase" mc="Standard.Class" uid="94786b72-4df7-47d2-9b0c-daa7bc63b404"/>
+    <ID name="&lt;&lt;TicketDatabase&gt;&gt;" mc="Standard.Class" uid="94786b72-4df7-47d2-9b0c-daa7bc63b404"/>
     <PID name="software_design" mc="Standard.Package" uid="e35933a5-e503-4b11-8dd5-e3946f6eecc3"/>
     <ATTRIBUTES>
       <ATT name="IsActive">false</ATT>
@@ -11,7 +11,7 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[TicketDatabase]]></ATT>
+      <ATT name="Name"><![CDATA[<<TicketDatabase>>]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
