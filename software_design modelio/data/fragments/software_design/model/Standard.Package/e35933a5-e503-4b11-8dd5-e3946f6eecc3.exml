@@ -13,6 +13,9 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="da6f4f79-5094-4379-acef-33c7364d4bd4"/>
+      </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Ticket" mc="Standard.Class" uid="67254ed9-6a79-4e42-bebe-5286d24ebaa0"/>
         <COMPID name="Person" mc="Standard.Class" uid="13b8745f-e9bc-4a07-85f2-9b14ce121a4c"/>
