@@ -11,4 +11,6 @@ public abstract class TicketDatabase extends Observable {
     public abstract void AddTicket(ticket t, RegisterEntry entry);
 
     public abstract void DeleteTicket(ticket t, RegisterEntry entry);
+
+    public abstract RegisterEntry getTicketEntry(ticket ticket);
 }

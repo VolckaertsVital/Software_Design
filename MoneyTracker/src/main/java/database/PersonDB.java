@@ -3,6 +3,7 @@ package database;
 import model.person;
 import model.ticket;
 import register_entry.RegisterEntry;
+import register_entry.RegisterEntryNull;
 
 import java.util.HashMap;
 
@@ -47,5 +48,10 @@ public class PersonDB extends PersonDatabase{
         this.db.remove(p , entry);
         setChanged();
         notifyObservers(p);
+    }
+
+    @Override
+    public RegisterEntry getUserEntry(person pers) {
+        return this.db.getOrDefault(pers, new RegisterEntryNull()); //  used to get the value mapped with specified key
     }
 }

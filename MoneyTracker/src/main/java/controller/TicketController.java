@@ -13,12 +13,7 @@ import static java.lang.Math.abs;
 
 public class TicketController implements Controller{
     private final TicketDatabase tdb;
-    ticket t;
-    boolean splitEven = t.isSplitEven();
-    double amount = t.getAmount();
-    ArrayList<person> lendFor = t.getLend();
-    int personCount = lendFor.size();
-    person paidBy = t.getPaidBy();
+    ticket t = null;
 
 
 
@@ -28,6 +23,11 @@ public class TicketController implements Controller{
 
     }
     public void calculateBalance(){
+        double amount = t.getAmount();
+        ArrayList<person> lendFor = t.getLend();
+        int personCount = lendFor.size();
+        person paidBy = t.getPaidBy();
+        boolean splitEven = t.isSplitEven();
 
 
 
@@ -55,6 +55,11 @@ public class TicketController implements Controller{
     }
 
     public void CalculateBill(){
+        double amount = t.getAmount();
+        ArrayList<person> lendFor = t.getLend();
+        int personCount = lendFor.size();
+        person paidBy = t.getPaidBy();
+        boolean splitEven = t.isSplitEven();
         HashMap<person, Double> persons = new HashMap<>();
         ArrayList<person> allUsers = t.getLend();
 
@@ -138,14 +143,6 @@ public class TicketController implements Controller{
 
     }
 
-   public void balance(){
-        if (splitEven){
-
-        }
-        else {
-
-        }
-   }
 
 
 

@@ -1,3 +1,4 @@
+import UI.UserInterface;
 import controller.PersonController;
 import controller.TicketController;
 import database.*;
@@ -28,11 +29,14 @@ public class Main
         TicketDatabase T_DB = TicketDB.getInstance();
         PersonController controller = new PersonController(P_DB);
         TicketController controller2 = new TicketController(T_DB);
+        UserInterface ui = new UserInterface(controller, controller2);
+        ui.init();
         UpdateObserver obs1 = new UpdateObserver();
         PersonObserver obs2 = new PersonObserver();
 
         P_DB.addObserver(obs1);
         P_DB.addObserver(obs2);
+        P_DB.addObserver(ui);
 
     }
 

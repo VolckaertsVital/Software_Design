@@ -135,6 +135,11 @@ public class ButtonPanel extends JPanel {
         addTicket.setPreferredSize(new Dimension(75, 25));
         this.add(this.addTicket);
 
+        addingUser();
+        removingUser();
+        addingTicket();
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
     }
 
@@ -255,5 +260,26 @@ public class ButtonPanel extends JPanel {
 
         });
         
+    }
+
+    public void removingUser() {
+        this.removeUser.addActionListener(listener ->
+        {
+            String nameUser = userName.getText();
+
+            for (int i : UserHash.keySet()) {
+
+                if (nameUser.equals(UserHash.get(i).getName())) { // als de naam van een user in de hashmap & database overeenkomt met de ingetypte naam in de gui.
+                    p_controller.removePerson(person);
+                    userCounter--;
+                    userCount.setText("# Users : " + userCount);
+                    foundUserToRemove = true;
+                }
+
+            }
+            if (!foundUserToRemove)
+                JOptionPane.showMessageDialog(null, "There is no user with the name " + nameUser);
+
+        });
     }
 }
