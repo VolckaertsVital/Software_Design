@@ -115,11 +115,11 @@ public class ButtonPanel extends JPanel {
         this.add(ticketPaidBy);
 
         boxsplitEven = new JCheckBox("Split Even");
-        boxsplitEven.setPreferredSize(new Dimension(10, 10));
+        boxsplitEven.setPreferredSize(new Dimension(10, 25));
         this.add(this.boxsplitEven);
 
         boxsplitOdd = new JCheckBox("Split Odd");
-        boxsplitOdd.setPreferredSize(new Dimension(10, 10));
+        boxsplitOdd.setPreferredSize(new Dimension(10, 25));
         this.add(this.boxsplitOdd);
 
         JLabel paidForLabel = new JLabel("Paid For : (fill in if split odd is checked, seperate users with a , )");
@@ -151,6 +151,7 @@ public class ButtonPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, "Name Required!");
             } else {
                 userCounter++;
+                userCount.setText("Users: " + userCounter);
                 AbstractFactory factory = FactoryProvider.getMainFactory();
                 this.person = factory.getPerson(input, 0.0);
                 UserHash.put(userCounter, person);
@@ -272,7 +273,7 @@ public class ButtonPanel extends JPanel {
                 if (nameUser.equals(UserHash.get(i).getName())) { // als de naam van een user in de hashmap & database overeenkomt met de ingetypte naam in de gui.
                     p_controller.removePerson(person);
                     userCounter--;
-                    userCount.setText("# Users : " + userCount);
+                    userCount.setText("Users: " + userCounter);
                     foundUserToRemove = true;
                 }
 
@@ -281,5 +282,6 @@ public class ButtonPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, "There is no user with the name " + nameUser);
 
         });
+        foundUserToRemove = false;
     }
 }

@@ -11,5 +11,5 @@ public abstract class PersonDatabase extends Observable {
 
     public abstract void DeletePerson(person p, RegisterEntry entry);
 
-    public abstract RegisterEntry getUserEntry(person persn);
+    public abstract RegisterEntry getUserEntry(person person);
 }

@@ -6,28 +6,23 @@ public class RegisterEntry
 {
     protected boolean checkedIn;
 
-    public RegisterEntry(boolean checkedIn)
+    public RegisterEntry(boolean checked)
     {
-        this.checkedIn = checkedIn;
+        this.checkedIn = checked;
 
 
     }
 
 
 
-    @Override
     public String toString()
     {
-        String status;
-
         if(this.checkedIn)
         {
-            status = "in";
+            return String.format("checked in");
         } else
         {
-            status = "out";
+            return String.format("checked out");
         }
-
-        return String.format("checked %s ", status);
     }
 }

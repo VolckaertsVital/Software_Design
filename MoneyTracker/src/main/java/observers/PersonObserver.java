@@ -14,8 +14,8 @@ public class PersonObserver implements Observer {
     public void update(Observable o, Object arg) {
         person p = (person) arg;
         String name = p.getName();
-        //RegisterEntry entry = PersonDB.getInstance().AddPerson((person) arg);
-        System.out.println("new user:" + name);
+        RegisterEntry entry = PersonDB.getInstance().getUserEntry((person) arg);
+        System.out.println(name + " " + entry);
 
 
     }
