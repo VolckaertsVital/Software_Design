@@ -4,7 +4,6 @@ import database.TicketDatabase;
 import model.person;
 import model.ticket;
 import register_entry.RegisterEntry;
-import sun.security.krb5.internal.Ticket;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,16 +12,19 @@ import static java.lang.Math.abs;
 
 public class TicketController implements Controller{
     private final TicketDatabase tdb;
-    ticket t = null;
+
 
 
 
 
     public TicketController(TicketDatabase tdb){
         this.tdb = tdb;
+        ticket t = null;
 
     }
-    public void calculateBalance(){
+
+    @Override
+    public void CalculateBalance(ticket t){
         double amount = t.getAmount();
         ArrayList<person> lendFor = t.getLend();
         int personCount = lendFor.size();
@@ -35,7 +37,11 @@ public class TicketController implements Controller{
 
             double amountPerPerson = amount/personCount;
             for (person i : lendFor){
-                i.setSpend(i.getSpend() + amountPerPerson);
+                if (i.getName().equals(paidBy.getName())) {
+                    i.setSpend(i.getSpend() + amountPerPerson * (personCount - 1.0));
+                } else {
+                    i.setSpend(i.getSpend() - amountPerPerson);
+                }
                 System.out.println(i.getName() + " balance :" + Math.round(i.getSpend() * 100) / 100.0 + "€");
             }
 
@@ -53,8 +59,8 @@ public class TicketController implements Controller{
             }
         }
     }
-
-    public void CalculateBill(){
+    @Override
+    public void CalculateBill(ticket t){
         double amount = t.getAmount();
         ArrayList<person> lendFor = t.getLend();
         int personCount = lendFor.size();
@@ -142,7 +148,6 @@ public class TicketController implements Controller{
     public void removePerson(person p) {
 
     }
-
 
 
 

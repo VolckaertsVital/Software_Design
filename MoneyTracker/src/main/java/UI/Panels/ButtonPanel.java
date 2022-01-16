@@ -200,6 +200,8 @@ public class ButtonPanel extends JPanel {
                     AbstractFactory factory = FactoryProvider.getMainFactory();
                     this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, allUsers); // paid for all users
                     t_controller.addTicket(ticket);
+                    t_controller.CalculateBalance(ticket);
+                    t_controller.CalculateBill(ticket);
                     foundUser = false;
                 } else {
 
@@ -249,8 +251,11 @@ public class ButtonPanel extends JPanel {
                     AbstractFactory factory = FactoryProvider.getMainFactory();
                     this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, splitOddList);
                     t_controller.addTicket(ticket);
+                    t_controller.CalculateBalance(ticket);
+                    t_controller.CalculateBill(ticket);
                     foundUser = false;
                     error = false;
+                    System.out.println("nice");
                 } else {
 
                     JOptionPane.showMessageDialog(null, "Make sure you filled everything in correctly!");
@@ -283,5 +288,9 @@ public class ButtonPanel extends JPanel {
 
         });
         foundUserToRemove = false;
+    }
+
+    public HashMap<Integer, model.person> getUserHash() {
+        return UserHash;
     }
 }

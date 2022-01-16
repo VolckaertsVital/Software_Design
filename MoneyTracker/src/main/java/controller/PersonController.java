@@ -33,4 +33,14 @@ public class PersonController implements Controller{
         RegisterEntry entry = new RegisterEntry(false);
         pdb.DeletePerson(p, entry);
     }
+
+    @Override
+    public void CalculateBalance(ticket t) {
+
+    }
+
+    @Override
+    public void CalculateBill(ticket t) {
+
+    }
 }

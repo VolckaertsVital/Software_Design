@@ -18,4 +18,8 @@ public interface Controller
 
     //methode remove person
     void removePerson(person p);
+
+    void CalculateBalance(ticket t);
+
+    void CalculateBill(ticket t);
 }

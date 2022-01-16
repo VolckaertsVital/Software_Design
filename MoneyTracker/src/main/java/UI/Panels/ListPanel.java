@@ -1,6 +1,7 @@
 package UI.Panels;
 
 import register_entry.RegisterEntry;
+import model.person;
 
 import javax.swing.*;
 
@@ -17,8 +18,8 @@ public class ListPanel extends JPanel{
         this.add(entryJlist);
     }
 
-    public void addEntry(RegisterEntry entry){
-        this.entryListModel.addElement(entry);
+    public void addEntry(RegisterEntry register){
+        this.entryListModel.addElement(register);
     }
 }
 
