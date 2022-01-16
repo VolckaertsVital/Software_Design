@@ -25,4 +25,8 @@ public class RegisterEntry
             return String.format("checked out");
         }
     }
+
+    public boolean isCheckedIn() {
+        return checkedIn;
+    }
 }
