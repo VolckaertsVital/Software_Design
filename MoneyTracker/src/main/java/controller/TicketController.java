@@ -47,14 +47,11 @@ public class TicketController implements Controller{
 
         }
         else{  //deelt het bedrag door het aantal personen in de groep behalve de persoon die betaald heeft en voegt het toe aan hun balance(getSpend)
-            double amountPerPerson = amount / (personCount - 1);
-            for (person i : lendFor){
-                if (i.getName().equals(paidBy.getName())){
-                    i.setSpend(i.getSpend());
-                }
-                else{
-                    i.setSpend(i.getSpend() + amountPerPerson);
-                }
+            double amountPerUser = amount / personCount;
+            paidBy.setSpend(paidBy.getSpend() + amount);
+            System.out.println(paidBy.getName() + " balance :" + Math.round(paidBy.getSpend() * 100) / 100.0 + "€");
+            for (person i : lendFor) {
+                i.setSpend(i.getSpend() - amountPerUser);
                 System.out.println(i.getName() + " balance :" + Math.round(i.getSpend() * 100) / 100.0 + "€");
             }
         }

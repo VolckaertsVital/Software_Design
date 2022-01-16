@@ -76,11 +76,12 @@ public class ButtonPanel extends JPanel {
         this.t_controller = tcontroller;
 
         userCount = new JLabel("Users: " + userCounter);
-        userCount.setPreferredSize(new Dimension(75, 25));
+        userCount.setPreferredSize(new Dimension(125, 25));
         this.add(userCount);
         JLabel userLabel = new JLabel("Add/Remove user: ");
         this.add(userLabel);
         userName = new JTextField();
+        userName.setPreferredSize(new Dimension(400, 25));
         this.add(userName);
 
         addUser = new JButton(" + ");
@@ -265,7 +266,6 @@ public class ButtonPanel extends JPanel {
                     t_controller.CalculateBill(ticket);
                     foundUser = false;
                     error = false;
-                    System.out.println("nice");
                 } else {
 
                     JOptionPane.showMessageDialog(null, "Make sure you filled everything in correctly!");
