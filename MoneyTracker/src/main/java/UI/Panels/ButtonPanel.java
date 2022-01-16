@@ -6,6 +6,8 @@ import controller.TicketController;
 import factory.AbstractFactory;
 import factory.FactoryProvider;
 
+import iterator.Iterator;
+import iterator.ListPrinter;
 import model.person;
 import model.ticket;
 
@@ -65,6 +67,8 @@ public class ButtonPanel extends JPanel {
     private boolean error;
     private boolean foundUserToRemove = false;
     private boolean foundPaidFor = false;
+
+    ListPrinter listprinter = new ListPrinter();
 
     public ButtonPanel(PersonController pcontroller, TicketController tcontroller) {
 
@@ -138,6 +142,7 @@ public class ButtonPanel extends JPanel {
         addingUser();
         removingUser();
         addingTicket();
+        foundUserToRemove = false;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -157,6 +162,11 @@ public class ButtonPanel extends JPanel {
                 UserHash.put(userCounter, person);
                 allUsers.add(person);
                 p_controller.addPerson(person);
+                System.out.println("\nList of persons: ");
+                for(Iterator iter = listprinter.getIterator(allUsers); iter.hasNext();){
+                    person pers = (person)iter.next();
+                    System.out.println(iter.getIndex() + ". "  + pers.getName());
+                }
 
             }
         });
@@ -196,7 +206,7 @@ public class ButtonPanel extends JPanel {
                 if (foundUser && ticketType.getText().length() > 0 && ticketPaidBy.getText().length() > 0 && ticketPriceField.getText().length() > 0 && !error) {
 
                     ticketCounter++;
-                    ticketCount.setText("# Tickets : " + ticketCount);
+                    ticketCount.setText("# Tickets : " + ticketCounter);
                     AbstractFactory factory = FactoryProvider.getMainFactory();
                     this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, allUsers); // paid for all users
                     t_controller.addTicket(ticket);
@@ -247,7 +257,7 @@ public class ButtonPanel extends JPanel {
                 if (foundUser && ticketType.getText().length() > 0 && ticketPaidBy.getText().length() > 0 && ticketPriceField.getText().length() > 0 && foundPaidFor && !error) {
 
                     ticketCounter++;
-                    ticketCount.setText("# Tickets : " + ticketCount);
+                    ticketCount.setText("# Tickets : " + ticketCounter);
                     AbstractFactory factory = FactoryProvider.getMainFactory();
                     this.ticket = factory.getTicket(ticketCounter, ticketPrice, typeTicket, typeTicket, person, splitEven, splitOddList);
                     t_controller.addTicket(ticket);
@@ -277,9 +287,16 @@ public class ButtonPanel extends JPanel {
 
                 if (nameUser.equals(UserHash.get(i).getName())) { // als de naam van een user in de hashmap & database overeenkomt met de ingetypte naam in de gui.
                     p_controller.removePerson(person);
+                    allUsers.remove(person);
+                    UserHash.remove(person);
                     userCounter--;
                     userCount.setText("Users: " + userCounter);
                     foundUserToRemove = true;
+                    System.out.println("\nList of persons: ");
+                    for(Iterator iter = listprinter.getIterator(allUsers); iter.hasNext();){
+                        person pers = (person)iter.next();
+                        System.out.println(iter.getIndex() + ". "  + pers.getName());
+                    }
                 }
 
             }
@@ -287,7 +304,6 @@ public class ButtonPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, "There is no user with the name " + nameUser);
 
         });
-        foundUserToRemove = false;
     }
 
     public HashMap<Integer, model.person> getUserHash() {
